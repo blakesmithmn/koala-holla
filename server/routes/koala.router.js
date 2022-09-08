@@ -17,7 +17,7 @@ const pool = require('../modules/pool.js');
 // DELETE
 koalaRouter.delete('/:idToDelete', (req,res)=>{
     console.log(req.params);
-    let koalaid = req.params.idToDelete
+    let koalaid = req.params.idToDelete;
     console.log(koalaid);
 
     const sqlQuery = `
