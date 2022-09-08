@@ -1,3 +1,5 @@
+-- set up a database named 'koalas'
+-- run this SQL command to set up the table.
 CREATE TABLE residents (
 	"id" SERIAL PRIMARY KEY,
     "name" VARCHAR(25) NOT NULL,
@@ -5,7 +7,8 @@ CREATE TABLE residents (
     "gender" VARCHAR(1) NOT NULL,
     "transfer" BOOLEAN NOT NULL, 
     "notes" VARCHAR(250));
-
+	
+-- run this SQL command to set up the current resident data.
 INSERT INTO residents (name, age, gender, transfer, notes)
 	VALUES
 		('Scotty', 4, 'M', true, 'Born in Guatemala'),
