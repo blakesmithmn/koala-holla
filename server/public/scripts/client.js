@@ -30,8 +30,35 @@ function setupClickListeners() {
 function getKoalas(){
   console.log( 'in getKoalas' );
   // ajax call to server to get koalas
-  
+  $.ajax({
+    method: 'GET',
+    url: '/koalas'
+  }).then((koalasRes) => {
+    console.log('got response from server for get request:',koalasRes);
+    //call renderKoalas function
+    renderKoalas(koalasRes);
+  })
 } // end getKoalas
+
+function renderKoalas(koalaResidents) {
+  console.log('in renderKoalas');
+  $('#viewKoalas').empty();
+  for(let i = 0; i < koalaResidents.length; i += 1) {
+    let koala = koala[i];
+    // For each book, append a new row to our table
+    $('#viewKoalas').append(`
+      <tr data-id=${koala.id}>
+        <td>${koala.name}</td>
+        <td>${koala.age}</td>
+        <td>${koala.gender}</td>
+        <td>${koala.transfer}</td>
+        <td>${koala.notes}</td>
+        <td><button>Ready For Transfer</button></td>
+        <td><button class="delete-btn">Ready For Transfer</button></td>
+      </tr>
+    `);
+  }
+}
 
 function saveKoala( newKoala ){
   console.log( 'in saveKoala', newKoala );
