@@ -8,7 +8,7 @@ $( document ).ready( function(){
   setupClickListeners()
   // load existing koalas on page load
   getKoalas();
-
+$(dodument).on('click', ".deleteKoalaButton", deleteKoala);
 }); // end doc ready
 
 function setupClickListeners() {
