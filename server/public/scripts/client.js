@@ -1,3 +1,5 @@
+const { post } = require("../../routes/koala.router");
+
 console.log( 'js' );
 
 $( document ).ready( function(){
@@ -10,21 +12,7 @@ $( document ).ready( function(){
 }); // end doc ready
 
 function setupClickListeners() {
-  $( '#addButton' ).on( 'click', function(){
-    console.log( 'in addButton on click' );
-    // get user input and put in an object
-    // NOT WORKING YET :(
-    // using a test object
-    let koalaToSend = {
-      name: 'testName',
-      age: 'testName',
-      gender: 'testName',
-      readyForTransfer: 'testName',
-      notes: 'testName',
-    };
-    // call saveKoala with the new obejct
-    saveKoala( koalaToSend );
-  }); 
+  $( '#addButton' ).on( 'click', saveKoala);
 }
 
 function getKoalas(){
@@ -36,4 +24,30 @@ function getKoalas(){
 function saveKoala( newKoala ){
   console.log( 'in saveKoala', newKoala );
   // ajax call to server to get koalas
+  const koalaResidentApplication = {
+    name: $('#nameIn').val(),
+    age: $('#ageIn').val(),
+    gender: $('#genderIn').val(),
+    transfer: $('#readyForTransferIn').val(),
+    notes: $('#notesIn').val()
+  }
+  $.ajax({
+    type: 'POST',
+    url: '/koalas',
+    data: koalaResidentApplication
+  }).then((postResponse) => {
+    console.log('The POST to /koalas was a success:', postResponse);
+    getKoalas();
+  }).catch((error) => {
+    console.log('The POST to /koalas was unsuccessful:', error);
+  });
 }
+
+
+// }).then(function(response) {
+//   console.log(response);
+//   getArtists();
+// }).catch(function(error) {
+//   console.log('error in artist post', error); 
+//   alert('Error adding artist. Please try again later.')       
+// });
