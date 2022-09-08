@@ -42,12 +42,3 @@ function saveKoala( newKoala ){
     console.log('The POST to /koalas was unsuccessful:', error);
   });
 }
-
-
-// }).then(function(response) {
-//   console.log(response);
-//   getArtists();
-// }).catch(function(error) {
-//   console.log('error in artist post', error); 
-//   alert('Error adding artist. Please try again later.')       
-// });
