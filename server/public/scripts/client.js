@@ -1,3 +1,5 @@
+const { Router } = require("express");
+
 console.log( 'js' );
 
 $( document ).ready( function(){
@@ -36,4 +38,15 @@ function getKoalas(){
 function saveKoala( newKoala ){
   console.log( 'in saveKoala', newKoala );
   // ajax call to server to get koalas
+}
+
+function deleteKoala(){
+  let idToDelete = $(this).parent().data("id");
+  console.log(idToDelete);
+$.ajax({
+  method: 'DELETE',
+  url: `/koalas/${idToDelete}`
+}).then((response)=>{
+  console.log('yay');
+})
 }
