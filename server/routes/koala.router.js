@@ -92,7 +92,7 @@ koalaRouter.delete('/:idToDelete', (req,res)=>{
     console.log(koalaid);
 
     const sqlQuery = `
-        DELETE FROM "koalas"
+        DELETE FROM "residents"
             WHERE "id"=$1;
     `
 

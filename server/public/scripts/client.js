@@ -1,4 +1,3 @@
-
 console.log( 'js' );
 
 $( document ).ready( function(){
@@ -98,6 +97,11 @@ function saveKoala( newKoala ){
     transfer: $('#readyForTransferIn').val(),
     notes: $('#notesIn').val()
   }
+  $('#nameIn').val('');
+  $('#ageIn').val('');
+  $('#genderIn').val('');
+  $('#readyForTransferIn').val('');
+  $('#notesIn').val('');
   $.ajax({
     type: 'POST',
     url: '/koalas',
@@ -113,12 +117,5 @@ function saveKoala( newKoala ){
  // DELETE FUNCTION 
 
 function deleteKoala(){
-  let idToDelete = $(this).parent().data("id");
+  let idToDelete = $(this).closest('tr').data("id");
   console.log(idToDelete);
-  $.ajax({
-    method: 'DELETE',
-    url: `/koalas/${idToDelete}`
-    }).then((response)=>{
-    console.log('yay');
-  })
-}
