@@ -13,6 +13,7 @@ $( document ).ready( function(){
 
 function setupClickListeners() {
   $( '#addButton' ).on( 'click', saveKoala);
+  $(document).on('click', ".delete-btn", deleteKoala);
 }
 
 function getKoalas(){
@@ -84,3 +85,17 @@ function saveKoala( newKoala ){
     console.log('The POST to /koalas was unsuccessful:', error);
   });
 }
+
+ // DELETE FUNCITON 
+
+function deleteKoala(){
+  let idToDelete = $(this).parent().data("id");
+  console.log(idToDelete);
+$.ajax({
+  method: 'DELETE',
+  url: `/koalas/${idToDelete}`
+}).then((response)=>{
+  console.log('yay');
+})
+}
+
