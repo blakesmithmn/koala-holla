@@ -14,7 +14,10 @@ $( document ).ready( function(){
 function setupClickListeners() {
   $( '#addButton' ).on( 'click', saveKoala);
   $(document).on('click', ".delete-btn", deleteKoala);
-}
+
+  //Setup click listener for transfer button:
+  $('#viewKoalas').on('click', '.transfer-btn', updateKoalaTransfer);
+  }
 
 function getKoalas(){
   console.log( 'in getKoalas' );
