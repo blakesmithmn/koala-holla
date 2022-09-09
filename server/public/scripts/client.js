@@ -1,5 +1,3 @@
-// const { post } = require("../../routes/koala.router");
-
 console.log( 'js' );
 
 $( document ).ready( function(){
@@ -89,13 +87,14 @@ function saveKoala( newKoala ){
  // DELETE FUNCITON 
 
 function deleteKoala(){
-  let idToDelete = $(this).parent().data("id");
+  let idToDelete = $(this).closest('tr').data("id");
   console.log(idToDelete);
 $.ajax({
   method: 'DELETE',
   url: `/koalas/${idToDelete}`
 }).then((response)=>{
+  getKoalas();
   console.log('yay');
 })
-}
+};
 
