@@ -1,5 +1,3 @@
-const { Router } = require("express");
-
 console.log( 'js' );
 
 $( document ).ready( function(){
@@ -8,7 +6,7 @@ $( document ).ready( function(){
   setupClickListeners()
   // load existing koalas on page load
   getKoalas();
-$(dodument).on('click', ".deleteKoalaButton", deleteKoala);
+$(document).on('click', ".deleteKoalaButton", deleteKoala);
 }); // end doc ready
 
 function setupClickListeners() {
