@@ -12,7 +12,32 @@ $( document ).ready( function(){
 function setupClickListeners() {
   $( '#addButton' ).on( 'click', saveKoala);
   $(document).on('click', ".delete-btn", deleteKoala);
+
+  //Setup click listener for transfer button:
+  $('#viewKoalas').on('click', '.transfer-btn', updateKoalaTransfer);
+  }
+
+function updateKoalaTransfer() {
+  //get id of item to update:
+  let idToUpdate = $(this).closest('tr').data('id');
+  console.log(idToUpdate);
+  $.ajax({
+    method: 'PUT',
+    url: `/koalas/${idToUpdate}`
+  }).then((response) => {
+    getKoalas();
+  })
 }
+
+  // $.ajax({
+  //   method: 'PUT',
+  //   url: `/creatures/${idToTransform}`,
+  //   data: { newCreatureType }
+  // }).then((response) => {
+  //   $('.transformInput').val('');
+  //   fetchCreatures();
+  // })
+
 
 function getKoalas(){
   console.log( 'in getKoalas' );
@@ -89,17 +114,8 @@ function saveKoala( newKoala ){
   });
 }
 
- // DELETE FUNCITON 
+ // DELETE FUNCTION 
 
 function deleteKoala(){
   let idToDelete = $(this).closest('tr').data("id");
   console.log(idToDelete);
-$.ajax({
-  method: 'DELETE',
-  url: `/koalas/${idToDelete}`
-}).then((response)=>{
-  getKoalas();
-  console.log('yay');
-})
-};
-
