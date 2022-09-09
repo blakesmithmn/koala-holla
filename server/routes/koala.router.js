@@ -11,7 +11,7 @@ koalaRouter.get('/', (req, res) => {
       SELECT * FROM residents
         ORDER BY "id";
     `
-db.query(sqlQuery)
+pool.query(sqlQuery)
     .then((dbRes) => {
     let theResidents = dbRes.rows;
     res.send(theResidents);

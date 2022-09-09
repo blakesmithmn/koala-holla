@@ -44,19 +44,34 @@ function renderKoalas(koalaResidents) {
   console.log('in renderKoalas');
   $('#viewKoalas').empty();
   for(let i = 0; i < koalaResidents.length; i += 1) {
-    let koala = koala[i];
+    let koala = koalaResidents[i];
     // For each book, append a new row to our table
-    $('#viewKoalas').append(`
-      <tr data-id=${koala.id}>
-        <td>${koala.name}</td>
-        <td>${koala.age}</td>
-        <td>${koala.gender}</td>
-        <td>${koala.transfer}</td>
-        <td>${koala.notes}</td>
-        <td><button>Ready For Transfer</button></td>
-        <td><button class="delete-btn">Ready For Transfer</button></td>
-      </tr>
-    `);
+    if(!koala.transfer){
+      $('#viewKoalas').append(`
+        <tr data-id=${koala.id}>
+          <td>${koala.name}</td>
+          <td>${koala.age}</td>
+          <td>${koala.gender}</td>
+          <td>${koala.transfer}</td>
+          <td>${koala.notes}</td>
+          <td><button class="transfer-btn">Ready For Transfer</button></td>
+          <td><button class="delete-btn">Delete</button></td>
+        </tr>
+      `);
+    }
+    else if(koala.transfer) {
+      $('#viewKoalas').append(`
+        <tr data-id=${koala.id}>
+          <td>${koala.name}</td>
+          <td>${koala.age}</td>
+          <td>${koala.gender}</td>
+          <td>${koala.transfer}</td>
+          <td>${koala.notes}</td>
+          <td></td>
+          <td><button class="delete-btn">Delete</button></td>
+        </tr>
+      `);
+    }
   }
 }
 
