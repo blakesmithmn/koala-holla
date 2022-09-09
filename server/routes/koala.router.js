@@ -44,7 +44,7 @@ koalaRouter.post('/', (req, res) => {
 // PUT
 
 
-// DELETE
+// DELETE again
 koalaRouter.delete('/:idToDelete', (req,res)=>{
     console.log(req.params);
     let koalaid = req.params.idToDelete;
