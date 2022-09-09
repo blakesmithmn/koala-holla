@@ -72,6 +72,11 @@ function saveKoala( newKoala ){
     transfer: $('#readyForTransferIn').val(),
     notes: $('#notesIn').val()
   }
+  $('#nameIn').val('');
+  $('#ageIn').val('');
+  $('#genderIn').val('');
+  $('#readyForTransferIn').val('');
+  $('#notesIn').val('');
   $.ajax({
     type: 'POST',
     url: '/koalas',
