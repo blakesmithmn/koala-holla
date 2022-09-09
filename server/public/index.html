@@ -17,9 +17,25 @@
     <section id="addKoala">
       <h2>Add Koala</h2>
       <input type="text" id="nameIn" value="" placeholder="Name">
-      <input type="text" id="ageIn" value="" placeholder="Age">
-      <input type="text" id="genderIn" value="" placeholder="Gender">
-      <input type="text" id="readyForTransferIn" value="" placeholder="Transfer">
+      <input type="number" id="ageIn" value="" placeholder="Age">
+
+      <!-- <input type="text" id="genderIn" value="" placeholder="Gender"> -->
+      <label for="gender">Gender</label>
+      <select id="genderIn" name="gender" >
+        <option value=""></option>
+        <option value="F">Female</option>
+        <option value="M">Male</option>
+      </select>
+
+
+      <!-- <input type="text" id="readyForTransferIn" value="" placeholder="Transfer"> -->
+      <label for="transfer">Ready For Transfer</label>
+      <select id="readyForTransferIn" name="transfer">
+        <option value=""></option>
+        <option value="True">True</option>
+        <option value="False">False</option>
+      </select>
+
       <input type="text" id="notesIn" value="" placeholder="Notes">
       <button type="button" id="addButton">Add Koala</button>
     </section>
