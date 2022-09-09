@@ -21,7 +21,7 @@ pool.query(sqlQuery)
     console.log('db query in GET /koalas failed:', dbErr);
     res.sendStatus(500);
     })
-  })
+})
 
 // POST
 koalaRouter.post('/', (req, res) => {
@@ -43,15 +43,56 @@ koalaRouter.post('/', (req, res) => {
 
 // PUT
 
+koalaRouter.put('/:idToUpdate', (req,res) => {
+    console.log(req.params);
+    let idToUpdate = req.params.idToUpdate;
 
-// DELETE
+    let sqlQuery = `UPDATE residents
+                        SET transfer = TRUE
+                        WHERE id = $1;`
+
+    let sqlValues = [idToUpdate];
+
+    pool.query(sqlQuery,sqlValues)
+        .then((dbRes) => {
+            res.sendStatus(200);
+        })
+        .catch((dbErr) => {
+        res.sendStatus('error is',dbErr);
+        })
+    })
+
+// app.put('/creatures/:idToTransform', (req, res) => {
+//     let animalToBe = req.body.newCreatureType;
+//     let idToTransform = req.params.idToTransform;
+    
+//     const sqlText = `
+//       UPDATE "creatures"
+//         SET "type"=$1
+//         WHERE "id"=$2;
+//     `
+//     const sqlValues = [animalToBe, idToTransform];
+    
+//     db.query(sqlText, sqlValues)
+//       .then((dbRes) => {
+//         res.sendStatus(200);
+//       })
+//       .catch((dbErr) => {
+//         res.sendStatus(500);
+//       })
+//   })
+    
+
+
+
+// DELETE again
 koalaRouter.delete('/:idToDelete', (req,res)=>{
     console.log(req.params);
     let koalaid = req.params.idToDelete;
     console.log(koalaid);
 
     const sqlQuery = `
-        DELETE FROM "koalas"
+        DELETE FROM "residents"
             WHERE "id"=$1;
     `
 
