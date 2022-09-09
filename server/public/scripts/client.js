@@ -116,6 +116,14 @@ function saveKoala( newKoala ){
 
  // DELETE FUNCTION 
 
-function deleteKoala(){
+ function deleteKoala(){
   let idToDelete = $(this).closest('tr').data("id");
   console.log(idToDelete);
+$.ajax({
+  method: 'DELETE',
+  url: `/koalas/${idToDelete}`
+}).then((response)=>{
+  getKoalas();
+  console.log('yay');
+})
+};
